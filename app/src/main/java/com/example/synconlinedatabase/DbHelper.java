@@ -40,9 +40,11 @@ public class DbHelper extends SQLiteOpenHelper {
 
     public Cursor readFromLocalDatabase(SQLiteDatabase database)
     {
-        String[] projection = {DbContract.NAME,DbContract.SYNC_STATUS};
+        //String[] projection = {DbContract.NAME,DbContract.SYNC_STATUS};
 
-        return (database.query(DbContract.TABLE_NAME,projection,null,null,DbContract.NAME,null,null));
+        //return (database.query(DbContract.TABLE_NAME, projection, null, null, null, null, null));
 
+        Cursor cursor = database.rawQuery("SELECT NAME,SYNC_STATUS FROM Users",null);
+        return cursor;
     }
 }
